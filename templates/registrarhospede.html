@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Hóspedes</title>
+</head>
+<body>
+    <h1>Preencha todos os dados</h1>
+    <form action="/registrar_hospede" method="POST">
+        <label for="Endereco">Endereco:</label>
+        <input type="text" name="Endereco" id="Endereco" required><br>
+
+        <label for="NumerodoQuarto">Número do Quarto:</label>
+        <input type="text" name="NumerodoQuarto" id="NumerodoQuarto" required><br>
+
+        <label for="NomedoHospede">Nome do Hospede:</label>
+        <input type="text" name="NomedoHospede" id="NomedoHospede" required><br>
+
+        <label for="NumerodePessoas">Número de Pessoas:</label>
+        <input type="number" name="NumerodePessoas" id="NumerodePessoas" required><br>
+
+        <label for="Animais">Animais de Estimação:</label>
+        <input type="text" name="Animais" id="Animais" required><br>
+
+        <label for="NumerodeAnimais">Número de Animais:</label>
+        <input type="number" name="NumerodeAnimais" id="NumerodeAnimais" required><br>
+
+        <label for="CPFresponsavel">CPF do Responsável:</label>
+        <input type="text" name="CPFresponsavel" id="CPFresponsavel" required><br>
+
+        <label for="Telefone">Telefone:</label>
+        <input type="text" name="Telefone" id="Telefone" required><br>
+
+        <label for="Data">Data:</label>
+        <input type="date" name="Data" id="Data" required><br>
+
+        <input type="submit" value="Registrar">
+    </form>
+    <p><a href="../homepage.html">Página Principal</a></p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página do Gerente</title>
+</head>
+<body>
+    <h1>Página do Gerente</h1>
+    <label for="data">Selecione uma data:</label>
+    <input type="date" id="data" name="data" required>
+    <button onclick="atualizarDados()">Atualizar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function atualizarDados() {
+            var data = document.getElementById("data").value;
+            fetch('/dados', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({data: data})
+            })
+            .then(response => response.json())
+            .then(data => exibirDados(data));
+        }
+
+        function exibirDados(data) {
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = '';
+
+            var apartamentosOcupados = data.apartamentos_ocupados;
+            var apartamentosDisponiveis = data.apartamentos_disponiveis;
+
+            resultado.innerHTML += '<h2>Apartamentos Ocupados:</h2>';
+            if (apartamentosOcupados.length > 0) {
+                resultado.innerHTML += '<ul>';
+                apartamentosOcupados.forEach(apartamento => {
+                    resultado.innerHTML += '<li>' + apartamento + '</li>';
+                });
+                resultado.innerHTML += '</ul>';
+            } else {
+                resultado.innerHTML += '<p>Nenhum apartamento ocupado.</p>';
+            }
+
+            resultado.innerHTML += '<h2>Apartamentos Disponíveis:</h2>';
+            if (apartamentosDisponiveis.length > 0) {
+                resultado.innerHTML += '<ul>';
+                apartamentosDisponiveis.forEach(apartamento => {
+                    resultado.innerHTML += '<li>' + apartamento + '</li>';
+                });
+                resultado.innerHTML += '</ul>';
+            } else {
+                resultado.innerHTML += '<p>Todos os apartamentos estão ocupados.</p>';
+            }
+        }
+    </script>
+
+<p><a href="../registrarapartamentos.html">Registrar Novos Apartamentos</a></p>
+</body>
+</html>
